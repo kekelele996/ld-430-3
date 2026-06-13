@@ -9,12 +9,14 @@ import { HealthController } from './controllers/health.controller';
 import { ReviewController } from './controllers/review.controller';
 import { TagController } from './controllers/tag.controller';
 import { Asset, AssetSchema } from './models/asset.schema';
+import { AuditLog, AuditLogSchema } from './models/auditLog.schema';
 import { Category, CategorySchema } from './models/category.schema';
 import { Collection, CollectionSchema } from './models/collection.schema';
 import { DownloadRecord, DownloadRecordSchema } from './models/downloadRecord.schema';
 import { ReviewRecord, ReviewRecordSchema } from './models/reviewRecord.schema';
 import { Tag, TagSchema } from './models/tag.schema';
 import { AssetService } from './services/asset.service';
+import { AuditLogService } from './services/auditLog.service';
 import { CategoryService } from './services/category.service';
 import { CollectionService } from './services/collection.service';
 import { DownloadService } from './services/download.service';
@@ -33,6 +35,7 @@ import { ValidationMiddleware } from './middlewares/validation.middleware';
     MongooseModule.forRoot(mongoUri()),
     MongooseModule.forFeature([
       { name: Asset.name, schema: AssetSchema },
+      { name: AuditLog.name, schema: AuditLogSchema },
       { name: Category.name, schema: CategorySchema },
       { name: Collection.name, schema: CollectionSchema },
       { name: DownloadRecord.name, schema: DownloadRecordSchema },
@@ -41,7 +44,7 @@ import { ValidationMiddleware } from './middlewares/validation.middleware';
     ]),
   ],
   controllers: [HealthController, AssetController, CategoryController, CollectionController, DownloadController, ReviewController, TagController],
-  providers: [AssetService, CategoryService, CollectionService, DownloadService, ReviewService, StorageService, TagService],
+  providers: [AssetService, AuditLogService, CategoryService, CollectionService, DownloadService, ReviewService, StorageService, TagService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

@@ -51,3 +51,18 @@ export enum UserRole {
   Uploader = 'Uploader',
   Viewer = 'Viewer',
 }
+
+export enum CollectionRole {
+  Viewer = 'Viewer',
+  Editor = 'Editor',
+}
+
+export enum AuditAction {
+  AddAsset = 'AddAsset',
+  RemoveAsset = 'RemoveAsset',
+  AddCollaborator = 'AddCollaborator',
+  RemoveCollaborator = 'RemoveCollaborator',
+  UpdateCollaboratorRole = 'UpdateCollaboratorRole',
+  UpdateCollection = 'UpdateCollection',
+  DeleteCollection = 'DeleteCollection',
+}
