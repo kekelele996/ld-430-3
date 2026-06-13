@@ -155,8 +155,8 @@ export class CollectionService {
     return updated;
   }
 
-  getAuditLogs(collectionId: string, userId: string) {
-    this.checkViewPermission(collectionId, userId);
+  async getAuditLogs(collectionId: string, userId: string) {
+    await this.checkViewPermission(collectionId, userId);
     return this.auditLogService.findByCollectionId(collectionId);
   }
 }
